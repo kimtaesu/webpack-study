@@ -2,9 +2,23 @@ const path = require("path/posix");
 
 module.exports = {
     mode: "development",
-    entry: './source/index.js',
+    entry: {
+        index: './source/index.js',
+        about: './source/about.js'
+    },
     output: {
-        filename: 'index_bundle.js',
-        path: path.resolve(__dirname, "dist")
+        filename: '[name]_bundle.js',
+        path: path.resolve(__dirname, "public")
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            }
+        ]
     }
 } 
